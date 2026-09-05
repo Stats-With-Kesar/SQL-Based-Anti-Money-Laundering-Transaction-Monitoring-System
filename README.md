@@ -12,10 +12,10 @@ Three fraud patterns deliberately injected on top, with known "answer key" accou
 Structuring: 15 accounts, 3–5 transactions each, just under ₹2,00,000
 Round-tripping: 10 chains of A→B→C→A, within 7 days
 Mule accounts: 10 accounts, 8–12 small deposits followed by one large withdrawal
-See  for the full generation logic.
+See "AML_SQL_PROJECT.ipynb" for the full generation logic.
 
 # Rule Book
-Before writing any SQL, five detection rules were documented in analyst-style plain language — see excel rule book. Each rule specifies: business description, numeric threshold, detection logic, and the SQL technique required.
+Before writing any SQL, five detection rules were documented in analyst-style plain language — see excel rule "rule book.xlsb.xlsx" book. Each rule specifies: business description, numeric threshold, detection logic, and the SQL technique required.
 Rule Pattern	             SQL Technique
 R1	 Structuring	         Window function (rolling 24h count)
 R2	 Velocity Spike	       Window function (rolling 90-day average)
@@ -41,9 +41,9 @@ Rather than reporting a suspiciously perfect 100% catch rate, each rule was vali
 R2 and R4 operate on the full dataset, not just injected fraud, so their flagged results include real behavioral anomalies without a labeled ground truth to check against.
 
 # Repo Structure
-├── generate_data.ipynb
+├── AML_SQL_PROJECT.ipynb
 ├── rule-book/
-│   └── AML_Rule_Book.xlsx
+│   └── rule book.xlsb.xlsx
 ├── sql/
 │   ├── schema_and_constraints.sql
 │   ├── rule1_structuring.sql
